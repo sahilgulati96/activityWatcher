@@ -10,7 +10,7 @@ COPY . .
 
 #PreSteps for Build
 RUN git clone --recursive https://github.com/ActivityWatch/activitywatch.git
-RUN cd activitywatch
+WORKDIR /opt/activitywatch
 RUN python3 -m venv venv
 RUN chmod +x /opt/activitywatch/venv/bin/activate
 RUN /opt/activitywatch/venv/bin/activate
