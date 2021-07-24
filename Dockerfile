@@ -5,6 +5,7 @@ FROM sahilgulati102/activitywatcherdependency:latest
 WORKDIR /opt
 
 #Step to force dockerfile to build always
+RUN rm -rfv *
 COPY . . 
 
 #PreSteps for Build
