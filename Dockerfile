@@ -6,20 +6,21 @@ WORKDIR /opt
 
 #Step to force dockerfile to build always
 RUN rm -rfv *
+WORKDIR /opt/activitywatch
 COPY . . 
 
 #PreSteps for Build
-RUN git clone --recursive https://github.com/ActivityWatch/activitywatch.git
-WORKDIR /opt/activitywatch
+#RUN git clone --recursive https://github.com/ActivityWatch/activitywatch.git
+#WORKDIR /opt/activitywatch
 RUN python3 -m venv venv
 RUN chmod +x /opt/activitywatch/venv/bin/activate
 RUN /opt/activitywatch/venv/bin/activate
 RUN pip3 install --user pyinstaller
 ENV PATH=$PATH:/root/.local/bin
-
+CMD bash
 #Run this step for Dev Environment to compile all code
-RUN make build
+#RUN make build
 
 #Use this to package the code for Testing/PROD
-RUN make clean
-RUN make package
+#RUN make clean
+#RUN make package
